@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#0a1020" />
+    <title>circle · 智能闹钟</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <div class="brand"><span class="brand-dot"></span>circle</div>
+        <button class="icon-button" id="settingsButton" aria-label="打开设置">•••</button>
+      </header>
+
+      <section class="hero" aria-labelledby="hero-title">
+        <p class="eyebrow" id="hero-title">下一次智能唤醒</p>
+        <div class="time-row"><time id="alarmTime">07:00</time><span class="am">AM</span></div>
+        <p class="wake-window">在 <strong>06:30 – 07:00</strong> 的浅睡眠阶段唤醒</p>
+      </section>
+
+      <section class="clock-card" aria-label="倒计时">
+        <div class="orb-wrap"><div class="orb" id="orb"><span class="orb-label">距离闹钟</span><strong id="countdown">--:--:--</strong><span id="countdownStatus">今晚好眠</span></div></div>
+        <div class="sound-wave" id="soundWave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      </section>
+
+      <section class="control-row" aria-label="闹钟控制">
+        <button class="round-control secondary" id="soundButton"><span>♬</span><small>轻唤醒</small></button>
+        <button class="main-control" id="startButton"><span class="play">▶</span><span>开始睡眠</span></button>
+        <button class="round-control secondary" id="editButton"><span>＋</span><small>设定时间</small></button>
+      </section>
+
+      <section class="insight-card" id="insightCard">
+        <div class="insight-icon">⌁</div>
+        <div><p class="eyebrow">睡眠感知</p><p id="sleepInsight">开启麦克风后，circle 会在设备端分析环境声音。</p></div>
+        <span class="status-pill" id="micStatus">未开启</span>
+      </section>
+
+      <section class="schedule" aria-labelledby="schedule-title">
+        <div class="section-heading"><h2 id="schedule-title">闹钟</h2><button id="addButton" aria-label="添加闹钟">＋</button></div>
+        <article class="alarm-item">
+          <div><span class="alarm-label">工作日</span><div class="alarm-value">07:00 <small>AM</small></div><p>智能唤醒 · 30 分钟</p></div>
+          <label class="switch"><input id="alarmEnabled" type="checkbox" checked /><span></span></label>
+        </article>
+      </section>
+    </main>
+
+    <dialog id="timeDialog">
+      <form method="dialog" class="dialog-content">
+        <button class="dialog-close" value="cancel" aria-label="关闭">×</button>
+        <p class="eyebrow">设定闹钟</p><h2>明天几点起床？</h2>
+        <label class="time-input">时间<input id="timeInput" type="time" value="07:00" /></label>
+        <label class="range-input">智能唤醒窗口 <output id="windowOutput">30 分钟</output><input id="windowInput" type="range" min="10" max="60" step="5" value="30" /></label>
+        <button class="save-button" id="saveTime" value="default">保存闹钟</button>
+      </form>
+    </dialog>
+    <script src="app.js"></script>
+  </body>
+</html>
